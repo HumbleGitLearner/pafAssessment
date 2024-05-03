@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title data-th-text = "${styleName}" ></title>
+</head>
+<body>
+     <h2>Doc Id: <code data-th-text="${breweryDetails}"></code></h2>
+
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td> <span data-th-text="${breweryDetails.name}"></span> </td>
+        </tr>
+        <tr>
+            <td>address1</td>
+            <td> <span data-th-text="${breweryDetails.address1}"></span> </td>
+        </tr>
+        <tr>
+            <td>address2:</td>
+            <td> <span data-th-text="${breweryDetails.address2}"></span> </td>
+        </tr>
+        <tr>
+            <td>city:</td>
+            <td> <span data-th-text="${breweryDetails.city}"></span> </td>
+        </tr>
+        <tr>
+            <td>phone:</td>
+            <td> <span data-th-text="${breweryDetails.phone}"></span> </td>
+        </tr>
+        <tr>
+            <td>website:</td>
+            <td> <span data-th-text="${breweryDetails.website}"></span> </td>
+        </tr>
+        <tr>
+            <td>description:</td>
+            <td> <span data-th-text="${breweryDetails.description}"></span> </td>
+        </tr>
+    </table>
+   <table class="table table-striped">
+        <thead>
+            <tr>
+                 <th>Beer Name</th>
+                <th>Description</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            <tr data-th-each="b: ${breweryDetails.beers}">
+                <td data-th-text="${b.beerName}"></td>
+                <td data-th-text="${b.beerDescription}"></td>
+                <td ><input type= number> </td>     
+             </tr>
+        </tbody>
+    </table>
+
+    <a href="/"> <h4>Back</h4> </a>
+ 
+</body>
+</html>
+
+
+
+</html>
