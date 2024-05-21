@@ -33,7 +33,7 @@ public class Style {
     
     public static Style create(SqlRowSet rs){
         Style s= new Style();
-      //  s.setStyleId(Integer.parseInt(rs.getInt("id")));
+        s.setStyleId(rs.getInt("id"));
         s.setName(rs.getString("style_name"));
         s.setBeerCount(Integer.parseInt(rs.getString("beer_count")));
         return s;

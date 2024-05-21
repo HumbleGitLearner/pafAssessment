@@ -47,7 +47,7 @@ public class Beer {
 		this.breweryName = breweryName;
 	}
 	// //        select br.id as beer_id, br.name as beer_name , br.descript, 
-	// bw.id as bewery_id, bw.name as brewery_name
+	// bw.id as brewery_id, bw.name as brewery_name
 	// from beers br 
 	// left join breweries bw
 	// on br.brewery_id= bw.id 
@@ -56,10 +56,10 @@ public class Beer {
 	
      public static Beer create(SqlRowSet rs){
         Beer b = new Beer();
-		b.setBeerId(rs.getInt("bewery_id"));
+		b.setBeerId(rs.getInt("beer_id"));
 		b.setBeerName(rs.getString("beer_name"));
 		b.setBeerDescription(rs.getString("descript"));
-		b.setBreweryId(rs.getInt("bewery_id"));
+		b.setBreweryId(rs.getInt("brewery_id"));
 		b.setBreweryName(rs.getString("brewery_name"));
            return b;
     }

@@ -6,61 +6,79 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title data-th-text = "${styleName}" ></title>
 </head>
 <body>
-     <h2>Doc Id: <code data-th-text="${breweryDetails}"></code></h2>
-
+    <code data-th-object="${breweryDetails}">
+        <h2>Brewery Name: <span data-th-text="*{breweryId}"></span>
+            <span data-th-text="*{name}"></span></h2>     
+     
+    <a href="/">Back</a>
     <table>
         <tr>
-            <td>Name:</td>
-            <td> <span data-th-text="${breweryDetails.name}"></span> </td>
+            <td>description:</td>
+            <td> <span data-th-text="*{description}"></span> </td>
         </tr>
         <tr>
             <td>address1</td>
-            <td> <span data-th-text="${breweryDetails.address1}"></span> </td>
+            <td> <span data-th-text="*{address1}"></span> </td>
         </tr>
         <tr>
             <td>address2:</td>
-            <td> <span data-th-text="${breweryDetails.address2}"></span> </td>
+            <td> <span data-th-text="*{address2}"></span> </td>
         </tr>
         <tr>
             <td>city:</td>
-            <td> <span data-th-text="${breweryDetails.city}"></span> </td>
+            <td> <span data-th-text="*{city}"></span> </td>
         </tr>
         <tr>
             <td>phone:</td>
-            <td> <span data-th-text="${breweryDetails.phone}"></span> </td>
+            <td> <span data-th-text="*{phone}"></span> </td>
         </tr>
         <tr>
             <td>website:</td>
-            <td> <span data-th-text="${breweryDetails.website}"></span> </td>
+            <td><a data-th-href="*{website}">
+                <span data-th-text="*{website}"></span></a> </li> 
+            </td>
         </tr>
-        <tr>
-            <td>description:</td>
-            <td> <span data-th-text="${breweryDetails.description}"></span> </td>
-        </tr>
-    </table>
-   <table class="table table-striped">
+ 
+     </table>
+    </code>
+     <!-- <form method="POST" data-th-action="@{'/brewery/' + ${breweryDetails.breweryId} + '/order'}"> -->
+    <form method="POST" data-th-action=
+        "@{/brewery/{breweryId}/order(breweryId=${breweryDetails.breweryId})}">
+    <br>
+    <h6>Beers</h6>
+    <button type="submit">Place Order</button>
+
+    <table class="table table-striped">
         <thead>
             <tr>
-                 <th>Beer Name</th>
+                <th>Beer Name</th>
                 <th>Description</th>
                 <th>Quantity</th>
             </tr>
         </thead>
-    
         <tbody>
             <tr data-th-each="b: ${breweryDetails.beers}">
-                <td data-th-text="${b.beerName}"></td>
-                <td data-th-text="${b.beerDescription}"></td>
-                <td ><input type= number> </td>     
-             </tr>
+            <td data-th-text="${b.beerName}"></td>
+            <td data-th-text="${b.beerDescription}"></td>
+                <!-- <td><input type="number" name="quantity" min="1" value="0" pattern="[0-9]+"></td> -->
+                
+                <!-- <input th:name="|cellValue${x.index}_${y.index}|" ... /> -->
+            <!-- <td><input type="number" th:name="${b.beerId}_quantity"
+                    min="0"  pattern="[1-9][0-9]*"></td> -->
+
+             <td><input type="number" th:name="${b.beerId + '_' + 'quantity'}"
+                    min="0" value="0" pattern="[1-9][0-9]*"></td>
+       
+            </tr>
         </tbody>
     </table>
 
-    <a href="/"> <h4>Back</h4> </a>
- 
+
+</form>
+
+
 </body>
 </html>
 

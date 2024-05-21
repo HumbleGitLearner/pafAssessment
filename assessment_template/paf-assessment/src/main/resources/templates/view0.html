@@ -21,12 +21,13 @@
 			</thead>
 			<tbody>
 				<tr data-th-each="s: ${styles}" data-th-object="${s}">
+
 					<td>
 						<span data-th-text="*{name}"></span> 
 					</td>
 					<td>
-							<a data-th-href="@{/beer/style/{id}?styleName={styleName}(id=*{styleId}, styleName=*{name})}">
-							<span data-th-text="*{beerCount}"></span>
+					<a data-th-href="@{/beer/style/{id}?styleName={styleName}(id=*{styleId}, styleName=*{name})}">
+					<span data-th-text="*{beerCount}"></span>
 						</a>
 					</td>
 				</tr>

@@ -9,11 +9,10 @@
     <title data-th-text = "${styleName}" ></title>
 </head>
 <body>
-    
+ 
     <h1> <span data-th-text = "${styleName}"></span></h1>
     <hr>
-    <br>
-    <br></br>
+    <a href="/"><h4>Back</h4> </a>  
     <table class="table table-striped">
         <thead>
             <tr>
@@ -27,13 +26,15 @@
             <tr data-th-each="b: ${beerDetails}">
                 <td data-th-text="${b.beerName}"></td>
                 <td data-th-text="${b.beerDescription}"></td>
-                <td data-th-text="${b.breweryName}">
-                    <a data-th-href="@{/beer/brewer/{id}?(id=*{breweryId})}">
+                <td >
+                    <a data-th-href="@{/beer/brewery/{id}(id=${b.breweryId})}">
+                        <span data-th-text="${b.breweryName}"></span>
+                    </a> 
                 </td>
              </tr>
         </tbody>
     </table>
     
-     <a data-th-href="/">
+
 </body>
 </html>
